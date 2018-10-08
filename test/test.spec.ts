@@ -1,4 +1,5 @@
 import { observable, MakeObservable, autorun } from "../src"
+// import { observable, MakeObservable, autorun } from "../dist"
 import { assert } from "chai"
 
 // var assert = require("assert")
