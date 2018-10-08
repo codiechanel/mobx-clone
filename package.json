@@ -14,7 +14,7 @@
   },
   "scripts": {
     "mocha": "mocha -r ts-node/register test/**/*.spec.ts",
-    "test:ci": "set TS_NODE_COMPILER_OPTIONS={\"module\":\"commonjs\"} && npm run mocha",
+    "test": "set TS_NODE_COMPILER_OPTIONS={\"module\":\"commonjs\"} && npm run mocha",
     "test2": "cross-env CI=1 react-scripts-ts test --env=jsdom",
     "test:watch": "react-scripts-ts test --env=jsdom",
     "build": "rollup -c",
