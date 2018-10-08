@@ -61,18 +61,13 @@ class MapHandler {
 export function observable(value) {
   if (typeof value === "object") {
     if (Array.isArray(value)) {
-      console.log("we got an array ")
       const proxyToArray = new Proxy(value, new ArrHandler())
-
       return proxyToArray
     } else if (isES6Map(value)) {
-      console.log("we got a map")
-
       //   const proxyToArray = new Proxy(value, new MapHandler(value))
       //   return proxyToArray
       return new ObservableMap(value)
     } else {
-      console.log("its an object ")
       let newObj = {}
       extendObservable(newObj, value)
       return newObj
@@ -233,9 +228,10 @@ class ObservableClass {
     this.observers.forEach(o => o.run())
   }
   get = () => {
-    console.log("getting value", this.value)
+    if (MobxCloneGlobalStack.length > 0) {
+      MobxCloneGlobalStack[MobxCloneGlobalStack.length - 1].addDependency(this)
+    }
 
-    MobxCloneGlobalStack[MobxCloneGlobalStack.length - 1].addDependency(this)
     return this.value
   }
   constructor(initialValue) {
