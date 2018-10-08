@@ -25,10 +25,10 @@ export default {
   ],
   plugins: [
     external(),
-    postcss({
-      modules: true,
-      writeDefinitions: true
-    }),
+    // postcss({
+    //   modules: true,
+    //   writeDefinitions: true
+    // }),
     url(),
     resolve(),
     typescript({
