@@ -1,4 +1,4 @@
-import { observable, autorun } from "../src"
+import { observable, MakeObservable, autorun } from "../src"
 import { assert } from "chai"
 
 // var assert = require("assert")
@@ -31,10 +31,18 @@ describe("Observable Object", function() {
     it("should be the box", function() {
       let p = observable("cool")
       assert.equal(p.get(), "cool", "is cool")
-      // assert.equal([1, 2, 3].indexOf(4), -1)
-      // console.log(p.other)
-
-      // assert.equal([1, 2, 3].indexOf(4), -1)
+    })
+  })
+  describe("#decorator observable", function() {
+    it("should decorator be the box", function() {
+      class Person {
+        nice
+        @MakeObservable
+        other = "other"
+      }
+      let person = new Person()
+      // console.log(person.other);
+      assert.equal(person.other, "other", "is cool")
     })
   })
 })

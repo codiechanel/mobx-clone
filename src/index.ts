@@ -222,8 +222,6 @@ class ObservableClass {
     this.observers.splice(this.observers.indexOf(observer), 1)
   }
   set = newValue => {
-    console.log("settng value", newValue)
-
     this.value = newValue
     this.observers.forEach(o => o.run())
   }
